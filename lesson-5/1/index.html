@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Шахматы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <table class="game">
+
+    </table>
+
+    <script>
+        const chess = {
+            gameEl: document.querySelector('.game'),
+
+            render(){
+                const col = ['', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', ''];
+                const row = ['', '1', '2', '3', '4', '5', '6', '7', '8', ''];
+               
+
+                for (let i = 0; i < 10; i++) {
+                        const tr = document.createElement('tr');
+                        this.gameEl.appendChild(tr);
+                        for (let j = 0; j < 10; j++) {
+                            const td = document.createElement('td');
+                            tr.appendChild(td);
+                            // td.innerHTML = (i + 1) + j;
+
+                          
+                            if (row[i] ==='' && col[j] !==0) {
+                                td.innerHTML =col[j];
+                                td.style.backgroundColor = "rgb(192, 183, 183)"
+
+                            } else if (col[j]  === '' && row[i] !== 0){
+                                td.innerHTML= row[i].toString();
+                                td.style.backgroundColor = "rgb(192, 183, 183)"
+                            } 
+
+                            if (this.color(i,j)){
+                                td.style.backgroundColor ="black"
+                            }
+                        }
+                    }
+                    
+            },
+
+            color(rowNumber, colNumber) {
+                if (rowNumber == 9 && '' <= colNumber<= 9){
+                   return false
+                } else if (rowNumber == '' && '' <= colNumber <= 9) { 
+                       return false
+                    } else if (rowNumber <= 8 && colNumber == 0) {
+                        return false
+                    } else if (rowNumber <= 8 && colNumber == 9) {
+                       return false
+                    } else {
+                        return (rowNumber % 2 === 1 && colNumber % 2 === 0) || (rowNumber % 2 === 0 && colNumber % 2 === 1)
+                    }
+                
+            },
+
+       
+        };
+
+        chess.render();
+    </script>
+</body>
+
+</html>

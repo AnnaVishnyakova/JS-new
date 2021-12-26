@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        "use strict";
+        const basket ={
+            sum: 0,
+          goods:
+            [
+                {
+                    id:1,
+                    name:'t-shirt',
+                    color:'black', 
+                    price: 1500,
+                    quantity:2,
+                    description:'black t-shirt for a girl'
+                },
+                {
+                    id: 2,
+                    name: 'dress',
+                    color: 'white',
+                    price: 2700,
+                    quantity:1,
+                    description: 'white dress for a girl'
+                },
+                {
+                    id: 3,
+                    name: 'pants',
+                    color: 'gray',
+                    price: 1000,
+                    quantity:3,
+                    description: 'gray pants for men'
+                },
+                {
+                    id: 4,
+                    name: 'pants',
+                    color: 'gray',
+                    price: 1000,
+                    quantity: 3,
+                    description: 'gray pants for men'
+                  }
+
+            ],
+            sumBasket() {
+                let sum = 0;
+                
+                for (var key in this.goods) {
+                    const elem = this.goods[key]; // получить товар по ключу
+                    sum += elem.price*elem.quantity;
+               
+                }
+                this.sum = sum; // запись свойста
+                return sum;
+            }
+        }
+            
+        basket.sumBasket();
+        console.log(basket.sum);
+       
+
+    </script>
+</body>
+</html>
